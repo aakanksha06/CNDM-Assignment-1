@@ -1,0 +1,27 @@
+RUN AND SCREENSHOT CHECKLIST
+
+1. Confirm Ansible is installed:
+   ansible --version
+
+2. Validate inventory:
+   ansible-inventory -i inventory.ini --list
+
+3. Run the playbook:
+   ansible-playbook -i inventory.ini setup_webserver.yml --ask-become-pass
+
+4. Validate the service:
+   systemctl status nginx --no-pager
+
+5. Validate the homepage:
+   curl http://localhost
+
+6. Open http://localhost in a browser and capture the deployed webpage.
+
+SCREENSHOTS TO CAPTURE FROM YOUR OWN RUN
+- Screenshot 1: `ansible --version`
+- Screenshot 2: inventory validation output
+- Screenshot 3: playbook execution ending with a recap and `failed=0`
+- Screenshot 4: `systemctl status nginx` showing active/running
+- Screenshot 5: browser showing the sample homepage
+
+Do not insert fabricated terminal output. If execution cannot be completed, tell your instructor that the implementation was not run and ask whether a design-only submission is acceptable.

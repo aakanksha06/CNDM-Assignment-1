@@ -1,0 +1,26 @@
+---
+- name: Configure a basic web server using Ansible
+  hosts: webservers
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: Install Nginx web server
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+        update_cache: true
+
+    - name: Ensure Nginx is enabled and running
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+
+    - name: Deploy the sample homepage
+      ansible.builtin.copy:
+        src: index.html
+        dest: /var/www/html/index.html
+        owner: root
+        group: root
+        mode: "0644"
